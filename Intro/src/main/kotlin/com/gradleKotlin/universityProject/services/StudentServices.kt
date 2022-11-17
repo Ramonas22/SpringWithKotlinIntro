@@ -21,8 +21,8 @@ class StudentServices {
         return studentRepo.findAll()
     }
 
-    fun getByIdStudents(id: Long): Optional<Student> {
-        return studentRepo.findById(id)
+    fun getByIdStudents(id: Long): Student? {
+        return studentRepo.findById(id).orElse(null)
     }
 
     fun updateStudent(student: Student): Student? {

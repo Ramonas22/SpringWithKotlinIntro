@@ -1,7 +1,9 @@
 package com.gradleKotlin.universityProject.controllers
 
+import com.gradleKotlin.universityProject.mappers.StudentMapper
 import com.gradleKotlin.universityProject.services.StudentServices
 import com.gradleKotlin.universityProject.models.Student
+import com.gradleKotlin.universityProject.models.StudentDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.util.*
@@ -15,25 +17,29 @@ class StudentController {
     @Autowired
     private lateinit var studentService: StudentServices
 
+    @Autowired
+    private lateinit var mapper : StudentMapper
+
     @GetMapping("/get-Students")
-    fun getStudents() : MutableIterable<Student> {
-        return studentService.getAllStudents()
+    fun getStudents() : MutableList<StudentDto>? {
+        return mapper.toDtoStudents(studentService.getAllStudents() as MutableList<Student>)
     }
 
     @GetMapping("/get-Student/{id}")
-    fun getStudent(@PathVariable id : Long) : Optional<Student> {
-        return studentService.getByIdStudents(id)
+    fun getStudent(@PathVariable id : Long) : StudentDto? {
+        return mapper.toDto(studentService.getByIdStudents(id))
     }
 
     @PostMapping("/add-Student")
-    fun postStudent(@RequestBody student: Student): Student {
-        studentService.insertStudentIntoDb(student)
+    fun postStudent(@RequestBody student: StudentDto?): StudentDto? {
+        mapper.toStudent(student)?.let { studentService.insertStudentIntoDb(it) }
         return student
     }
 
     @PutMapping("/update-Student")
-    fun updateStudent(@RequestBody student: Student) : Student?{
-        return studentService.updateStudent(student)
+    fun updateStudent(@RequestBody student: StudentDto?) : StudentDto?{
+        mapper.toStudent(student)?.let { studentService.updateStudent(it) }
+        return  student
     }
 
     @DeleteMapping("/delete-Student/{id}")

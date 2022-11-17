@@ -10,14 +10,14 @@ data class Student(
     val id: Long,
 
     @Column(name = "first_name")
-    val firstName: String,
+    val firstName: String?,
 
     @Column(name = "last_name")
-    val lastName: String,
+    val lastName: String?,
 
     @Column(name = "personal_code")
-    val personalCode: String,
+    val personalCode: String?,
 
     @Column(name = "course")
-    val course: String
+    val course: String?
 )
