@@ -1,9 +1,9 @@
-package com.gradleKotlin.controller
+package com.gradleKotlin.intro.controller
 
-import com.gradleKotlin.model.IdentityCode
-import com.gradleKotlin.model.TestModel
-import com.gradleKotlin.service.IdentityCodeService
-import com.gradleKotlin.service.TestModelServices
+import com.gradleKotlin.intro.model.IdentityCode
+import com.gradleKotlin.intro.model.TestModel
+import com.gradleKotlin.intro.service.IdentityCodeService
+import com.gradleKotlin.intro.service.TestModelServices
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -17,18 +17,18 @@ class ModelTestingController {
     private lateinit var identityCodeService : IdentityCodeService
 
     @PostMapping("/postModel")
-    fun testModel(@RequestBody testModel : TestModel): TestModel{
+    fun testModel(@RequestBody testModel : TestModel): TestModel {
         println("${testModel.title} ${testModel.content}")
         return testModel
     }
     @PostMapping("/postModelCapitals")
-    fun testModelCapitals(@RequestBody testModel : TestModel): TestModel{
+    fun testModelCapitals(@RequestBody testModel : TestModel): TestModel {
         println("${testModel.title} ${testModel.content}")
         return modelServices.returnCapitalTitle(testModel)
     }
 
     @PostMapping("/countAssignees")
-    fun countAssignees(@RequestBody testModel : TestModel): TestModel{
+    fun countAssignees(@RequestBody testModel : TestModel): TestModel {
         println("${testModel.title} ${testModel.content}")
         testModel.counter = modelServices.countAssignees(testModel.assignedNames!!)
         return modelServices.returnCapitalTitle(testModel)

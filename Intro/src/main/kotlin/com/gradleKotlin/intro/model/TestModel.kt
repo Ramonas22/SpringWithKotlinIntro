@@ -1,4 +1,4 @@
-package com.gradleKotlin.model
+package com.gradleKotlin.intro.model
 
 import lombok.Data
 

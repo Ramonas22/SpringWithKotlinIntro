@@ -1,6 +1,6 @@
-package com.gradleKotlin.service
+package com.gradleKotlin.intro.service
 
-import com.gradleKotlin.model.IdentityCode
+import com.gradleKotlin.intro.model.IdentityCode
 import org.springframework.stereotype.Service
 import java.lang.Math.floor
 

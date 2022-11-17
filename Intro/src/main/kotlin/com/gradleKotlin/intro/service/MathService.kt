@@ -1,4 +1,4 @@
-package com.gradleKotlin.service
+package com.gradleKotlin.intro.service
 
 import org.springframework.stereotype.Service
 

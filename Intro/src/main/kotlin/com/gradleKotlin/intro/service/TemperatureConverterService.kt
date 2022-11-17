@@ -1,6 +1,6 @@
-package com.gradleKotlin.service
+package com.gradleKotlin.intro.service
 
-import com.gradleKotlin.model.Temperature
+import com.gradleKotlin.intro.model.Temperature
 import org.springframework.stereotype.Service
 
 @Service

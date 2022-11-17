@@ -1,7 +1,7 @@
-package com.gradleKotlin.controller
+package com.gradleKotlin.intro.controller
 
-import com.gradleKotlin.model.TestModel
-import com.gradleKotlin.service.MathService
+import com.gradleKotlin.intro.model.TestModel
+import com.gradleKotlin.intro.service.MathService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.bind.DefaultValue
 import org.springframework.web.bind.annotation.*

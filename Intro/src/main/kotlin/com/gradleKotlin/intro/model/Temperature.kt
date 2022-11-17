@@ -1,4 +1,4 @@
-package com.gradleKotlin.model
+package com.gradleKotlin.intro.model
 
 data class Temperature(
     var fahrenheit : Double,

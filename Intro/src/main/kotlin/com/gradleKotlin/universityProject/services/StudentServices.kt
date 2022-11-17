@@ -1,8 +1,7 @@
-package com.gradleKotlin.service
+package com.gradleKotlin.universityProject.services
 
-import com.gradleKotlin.model.Student
-import com.gradleKotlin.repository.StudentRepository
-import org.hibernate.SessionFactory
+import com.gradleKotlin.universityProject.models.Student
+import com.gradleKotlin.universityProject.repository.StudentRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*

@@ -1,4 +1,4 @@
-package com.gradleKotlin.model
+package com.gradleKotlin.universityProject.models
 
 import javax.persistence.*
 

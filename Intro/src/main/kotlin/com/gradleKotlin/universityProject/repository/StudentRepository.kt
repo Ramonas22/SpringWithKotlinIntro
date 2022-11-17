@@ -1,6 +1,6 @@
-package com.gradleKotlin.repository
+package com.gradleKotlin.universityProject.repository
 
-import com.gradleKotlin.model.Student
+import com.gradleKotlin.universityProject.models.Student
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 

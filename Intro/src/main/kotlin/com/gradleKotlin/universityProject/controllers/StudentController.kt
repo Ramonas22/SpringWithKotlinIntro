@@ -1,7 +1,7 @@
-package com.gradleKotlin.controller
+package com.gradleKotlin.universityProject.controllers
 
-import com.gradleKotlin.model.Student
-import com.gradleKotlin.service.StudentServices
+import com.gradleKotlin.universityProject.services.StudentServices
+import com.gradleKotlin.universityProject.models.Student
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.util.*

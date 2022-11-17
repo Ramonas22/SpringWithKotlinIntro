@@ -1,7 +1,7 @@
-package com.gradleKotlin.controller
+package com.gradleKotlin.intro.controller
 
-import com.gradleKotlin.model.Temperature
-import com.gradleKotlin.service.TemperatureConverterService
+import com.gradleKotlin.intro.model.Temperature
+import com.gradleKotlin.intro.service.TemperatureConverterService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
