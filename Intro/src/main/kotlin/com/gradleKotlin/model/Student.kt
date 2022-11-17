@@ -16,5 +16,8 @@ data class Student(
     val lastName: String,
 
     @Column(name = "personal_code")
-    val personalCode: String
+    val personalCode: String,
+
+    @Column(name = "course")
+    val course: String
 )

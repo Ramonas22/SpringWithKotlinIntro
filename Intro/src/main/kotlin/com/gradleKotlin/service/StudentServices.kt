@@ -26,8 +26,12 @@ class StudentServices {
         return studentRepo.findById(id)
     }
 
-    fun updateStudent(student: Student): Student {
-        return studentRepo.save(student)
+    fun updateStudent(student: Student): Student? {
+        if(studentRepo.existsById(student.id)){
+            return studentRepo.save(student)
+        }else{
+            return null
+        }
     }
 
     fun deleteStudentById(id: Long): String {
