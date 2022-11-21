@@ -11,8 +11,8 @@ class UniversityServices {
     @Autowired
     private lateinit var universityRepo: UniversityRepository
 
-    fun addUniversity(university: University) {
-        universityRepo.save(university)
+    fun addUniversity(university: University): University {
+        return universityRepo.save(university)
     }
 
     fun getUniversityById(id: Long): University? {

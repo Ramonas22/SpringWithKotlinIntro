@@ -19,8 +19,7 @@ class UniversityController {
 
     @PostMapping("/addUniversity")
     fun addUniversity(@RequestBody university: UniversityDto): UniversityDto {
-        mapper.toUniversity(university)?.let { universityServices.addUniversity(it) }
-        return university
+        return mapper.toDto(mapper.toUniversity(university)?.let { universityServices.addUniversity(it) })!!
     }
 
     @GetMapping("/find-University-By-Id/{id}")
@@ -33,13 +32,13 @@ class UniversityController {
         return mapper.toDtoUniversities(universityServices.getAllUniversities() as MutableList<University>)
     }
 
-    @PostMapping("update-University-Info")
+    @PutMapping("update-University-Info")
     fun updateUniversityInfo(@RequestBody university: UniversityDto): UniversityDto? {
         return mapper.toDto(mapper.toUniversity(university)?.let { universityServices.updateUniversity(it) })
     }
 
     @DeleteMapping("delete-University-By-Id/{id}")
-    fun deleteUniversityById(@PathVariable id : Long){
+    fun deleteUniversityById(@PathVariable id: Long) {
         universityServices.removeUniversity(id)
     }
 
