@@ -1,4 +1,4 @@
-package com.gradleKotlin.universityProject.repository
+package com.gradleKotlin.universityProject.repositories
 
 import com.gradleKotlin.universityProject.models.Student
 import org.springframework.data.repository.CrudRepository

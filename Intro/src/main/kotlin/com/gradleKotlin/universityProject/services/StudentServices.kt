@@ -1,10 +1,9 @@
 package com.gradleKotlin.universityProject.services
 
 import com.gradleKotlin.universityProject.models.Student
-import com.gradleKotlin.universityProject.repository.StudentRepository
+import com.gradleKotlin.universityProject.repositories.StudentRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service
 class StudentServices {
@@ -26,19 +25,19 @@ class StudentServices {
     }
 
     fun updateStudent(student: Student): Student? {
-        if(studentRepo.existsById(student.id)){
-            return studentRepo.save(student)
+        return if(studentRepo.existsById(student.id)){
+             studentRepo.save(student)
         }else{
-            return null
+             null
         }
     }
 
     fun deleteStudentById(id: Long): String {
-        if(studentRepo.existsById(id)){
+        return if(studentRepo.existsById(id)){
             studentRepo.deleteById(id)
-            return "${id} deleted"
+            "${id} deleted"
         }else{
-            return "${id} not found in db"
+            "${id} not found in db"
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.gradleKotlin.universityProject.mappers
 
 import com.gradleKotlin.universityProject.models.Student
-import com.gradleKotlin.universityProject.models.StudentDto
+import com.gradleKotlin.universityProject.dto.StudentDto
 import org.springframework.stereotype.Service
 
 @Service

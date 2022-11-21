@@ -3,7 +3,7 @@ package com.gradleKotlin.universityProject.controllers
 import com.gradleKotlin.universityProject.mappers.StudentMapper
 import com.gradleKotlin.universityProject.services.StudentServices
 import com.gradleKotlin.universityProject.models.Student
-import com.gradleKotlin.universityProject.models.StudentDto
+import com.gradleKotlin.universityProject.dto.StudentDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.util.*
@@ -11,7 +11,7 @@ import java.util.*
 
 @CrossOrigin(origins = ["http://localhost:3000", "http://127.0.0.1:3000"])
 @RestController
-@RequestMapping("/university")
+@RequestMapping("/university/student")
 class StudentController {
 
     @Autowired

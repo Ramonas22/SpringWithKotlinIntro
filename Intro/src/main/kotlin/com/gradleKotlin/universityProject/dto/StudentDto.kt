@@ -1,4 +1,4 @@
-package com.gradleKotlin.universityProject.models
+package com.gradleKotlin.universityProject.dto
 
 data class StudentDto(
     var id: Long,
