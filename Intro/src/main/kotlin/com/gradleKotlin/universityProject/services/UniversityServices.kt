@@ -24,12 +24,12 @@ class UniversityServices {
     }
 
     fun updateUniversity(university: University): University? {
-        if (universityRepo.existsById(university.id)) {
+        return if (universityRepo.existsById(university.id)) {
             universityRepo.save(university)
-            return university
+            university
         } else {
             print("University with provided id does not exist")
-            return null
+            null
         }
     }
 

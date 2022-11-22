@@ -29,6 +29,9 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
     // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
     //implementation("org.springframework:spring-jdbc:3.1.0.RELEASE")
 

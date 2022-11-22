@@ -21,6 +21,7 @@
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="4cc9c3ad-3cdf-48e3-8450-02c1319bac24" dataset="public.student" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="4cc9c3ad-3cdf-48e3-8450-02c1319bac24" dataset="public.university" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
