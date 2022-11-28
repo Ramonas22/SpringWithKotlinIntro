@@ -28,6 +28,11 @@ class StudentController {
         return studentService.getByIdStudents(id)
     }
 
+    @GetMapping("/get-Students-By-University/{id}")
+    fun getStudentsByUniversityId(@PathVariable id:Long) : MutableList<StudentDto>?{
+        return studentService.findStudentsByUniversityId(id)
+    }
+
     @PostMapping("/add-Student")
     fun postStudent(@RequestBody student: StudentDto?): StudentDto? {
         return studentService.insertStudentIntoDb(student)

@@ -48,4 +48,8 @@ class StudentServices {
             "${id} not found in db"
         }
     }
+
+    fun findStudentsByUniversityId(id: Long): MutableList<StudentDto>? {
+        return mapper.toDtoStudents(studentRepo.findAllByUniversityId(id))
+    }
 }
