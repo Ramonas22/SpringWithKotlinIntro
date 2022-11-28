@@ -1,7 +1,7 @@
 package com.gradleKotlin.todo.repositories
 
-import com.gradleKotlin.todo.entities.User1
+import com.gradleKotlin.todo.entities.User
 import org.springframework.data.repository.CrudRepository
 
-interface UserRepository : CrudRepository<User1, Long> {
+interface UserRepository : CrudRepository<User, Long> {
 }

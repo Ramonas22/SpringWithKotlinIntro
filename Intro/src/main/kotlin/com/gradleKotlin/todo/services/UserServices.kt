@@ -17,7 +17,7 @@ class UserServices {
 
     fun addUser(userDto: UserDto?): UserDto? {
         return if (userDto != null) {
-            mapper.toUserDto(mapper.toUser(userDto)?.let { userRepository.save(it) })
+            mapper.toUser(userDto)?.let { userRepository.save(it) }?.let { mapper.toUserDto(it) }
         } else {
             print("User is null")
             null
@@ -25,7 +25,7 @@ class UserServices {
     }
 
     fun findUserById(id : Long):UserDto? {
-        return mapper.toUserDto(userRepository.findByIdOrNull(id))
+        return userRepository.findByIdOrNull(id)?.let { mapper.toUserDto(it) }
     }
 
     fun getAllUsers(): MutableList<UserDto>? {
@@ -34,7 +34,7 @@ class UserServices {
 
     fun updateUser(userDto : UserDto) : UserDto?{
         return if(userRepository.existsById(userDto.id)){
-            mapper.toUserDto(mapper.toUser(userDto)?.let{ userRepository.save(it)})
+            mapper.toUser(userDto)?.let{ userRepository.save(it)}?.let { mapper.toUserDto(it) }
         }else{
             print("User with provided id does not exist")
             null

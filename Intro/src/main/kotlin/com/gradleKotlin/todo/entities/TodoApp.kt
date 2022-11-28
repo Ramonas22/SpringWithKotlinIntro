@@ -19,6 +19,7 @@ data class TodoApp(
     @Column(name ="endDate")
     val endDate: Date?,
 
-    @Column(name ="key")
-    val key: String
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_todos")
+    val user: User
 )

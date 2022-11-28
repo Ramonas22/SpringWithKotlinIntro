@@ -7,5 +7,7 @@ data class UserDto(
 
     val surname: String?,
 
-    val email: String?
+    val email: String?,
+
+    val todosList: MutableList<Long>?
 )

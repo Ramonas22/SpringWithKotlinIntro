@@ -11,5 +11,5 @@ data class TodoAppDto(
 
     val endDate: Date?,
 
-    val key: String
+    val key: Long
 )

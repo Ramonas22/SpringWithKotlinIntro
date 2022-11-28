@@ -4,7 +4,8 @@ import javax.persistence.*
 
 
 @Entity
-data class User1(
+@Table(name = "Todo_app_users")
+data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -17,5 +18,9 @@ data class User1(
     val surname: String?,
 
     @Column(name ="email")
-    val email: String?
+    val email: String?,
+
+    @OneToMany(cascade = [CascadeType.ALL])
+    @JoinColumn(name = "user_todos")
+    val userTodos: MutableList<TodoApp>?
 )
