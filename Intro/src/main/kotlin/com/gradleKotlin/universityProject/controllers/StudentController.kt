@@ -17,29 +17,25 @@ class StudentController {
     @Autowired
     private lateinit var studentService: StudentServices
 
-    @Autowired
-    private lateinit var mapper : StudentMapper
 
     @GetMapping("/get-Students")
     fun getStudents() : MutableList<StudentDto>? {
-        return mapper.toDtoStudents(studentService.getAllStudents() as MutableList<Student>)
+        return studentService.getAllStudents()
     }
 
     @GetMapping("/get-Student/{id}")
     fun getStudent(@PathVariable id : Long) : StudentDto? {
-        return mapper.toDto(studentService.getByIdStudents(id))
+        return studentService.getByIdStudents(id)
     }
 
     @PostMapping("/add-Student")
     fun postStudent(@RequestBody student: StudentDto?): StudentDto? {
-        mapper.toStudent(student)?.let { studentService.insertStudentIntoDb(it) }
-        return student
+        return studentService.insertStudentIntoDb(student)
     }
 
-    @PutMapping("/update-Student")
-    fun updateStudent(@RequestBody student: StudentDto?) : StudentDto?{
-        mapper.toStudent(student)?.let { studentService.updateStudent(it) }
-        return  student
+    @PutMapping("/update-Student/{id}")
+    fun updateStudent(@PathVariable id: Long, @RequestBody student: StudentDto) : StudentDto?{
+        return  studentService.updateStudent(id, student)
     }
 
     @DeleteMapping("/delete-Student/{id}")

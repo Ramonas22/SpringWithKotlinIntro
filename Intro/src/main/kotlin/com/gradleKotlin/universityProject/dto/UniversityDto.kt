@@ -18,7 +18,9 @@ data class UniversityDto(
 
     @field: Email(message = "not email")
     @field: NotBlank(message = "blank")
-    val email :String
+    val email :String,
+
+    val studentsIds:MutableList<Long>?
 
     //Will be implemented later
     /*

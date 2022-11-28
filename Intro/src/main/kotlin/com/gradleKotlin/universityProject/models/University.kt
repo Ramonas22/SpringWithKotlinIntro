@@ -1,12 +1,7 @@
 package com.gradleKotlin.universityProject.models
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 import javax.validation.constraints.Email
-import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Size
 
@@ -24,7 +19,7 @@ data class University(
     @field: NotBlank
     @field: Size(min = 2, message = "text is too short")
     @Column(name = "address")
-    val address : String,
+    val address : String?,
 
     @Column(name = "rating")
     val rating : Int?,
@@ -36,15 +31,18 @@ data class University(
     @field: Email(message = "not email")
     @field: NotBlank(message = "blank")
     @Column(name = "email")
-    val email : String
+    val email : String?,
+
+    @ManyToMany(mappedBy = "universities", fetch = FetchType.LAZY)
+    @Column(name = "students")
+    val students : MutableList<Student>?
 
     //Will be implemented later
     /*
     @Column(name = "lecturers")
     val lecturers : MutableList<Lecturer>?,
 
-    @Column(name = "students")
-    val students : MutableList<Student>?
+
 
      */
 )

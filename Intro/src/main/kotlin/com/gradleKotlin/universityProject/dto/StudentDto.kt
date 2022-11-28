@@ -9,5 +9,7 @@ data class StudentDto(
 
     val personalCode: String?,
 
-    val course: String?
+    val course: String?,
+
+    val universitiesId:MutableList<Long>?
 )

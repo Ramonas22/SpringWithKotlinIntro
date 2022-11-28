@@ -19,5 +19,14 @@ data class Student(
     val personalCode: String?,
 
     @Column(name = "course")
-    val course: String?
+    val course: String?,
+
+    @ManyToMany
+    @JoinTable(
+        name ="universities_students",
+        joinColumns = [JoinColumn(name ="student_id")],
+        inverseJoinColumns = [JoinColumn(name = "university_id")]
+    )
+    @Column(name = "universities")
+    val universities: MutableList<University>?
 )

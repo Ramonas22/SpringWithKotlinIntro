@@ -1,5 +1,7 @@
 package com.gradleKotlin.universityProject.services
 
+import com.gradleKotlin.universityProject.dto.StudentDto
+import com.gradleKotlin.universityProject.mappers.StudentMapper
 import com.gradleKotlin.universityProject.models.Student
 import com.gradleKotlin.universityProject.repositories.StudentRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,22 +13,28 @@ class StudentServices {
     @Autowired
     private lateinit var studentRepo : StudentRepository
 
-    fun insertStudentIntoDb(student : Student){
-        studentRepo.save(student)
+    @Autowired
+    private lateinit var mapper : StudentMapper
 
+    fun insertStudentIntoDb(student : StudentDto?) : StudentDto?{
+      return if(student != null ){
+          mapper.toDto(studentRepo.save(mapper.toStudent(student)))
+      }else{
+          null
+      }
     }
 
-    fun getAllStudents(): MutableIterable<Student> {
-        return studentRepo.findAll()
+    fun getAllStudents(): MutableList<StudentDto>? {
+        return mapper.toDtoStudents(studentRepo.findAll() as MutableList<Student>)
     }
 
-    fun getByIdStudents(id: Long): Student? {
-        return studentRepo.findById(id).orElse(null)
+    fun getByIdStudents(id: Long): StudentDto? {
+        return mapper.toDto(studentRepo.findById(id).orElse(null))
     }
 
-    fun updateStudent(student: Student): Student? {
-        return if(studentRepo.existsById(student.id)){
-             studentRepo.save(student)
+    fun updateStudent(id: Long, student: StudentDto): StudentDto? {
+        return if(studentRepo.existsById(id)){
+             mapper.toDto(studentRepo.save(mapper.toStudent(student)))
         }else{
              null
         }

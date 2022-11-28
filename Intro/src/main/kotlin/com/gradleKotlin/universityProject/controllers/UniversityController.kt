@@ -16,27 +16,24 @@ class UniversityController {
     @Autowired
     private lateinit var universityServices: UniversityServices
 
-    @Autowired
-    private lateinit var mapper: UniversityMapper
-
     @PostMapping("/addUniversity")
     fun addUniversity(@Valid @RequestBody university: UniversityDto): UniversityDto {
-        return mapper.toDto(mapper.toUniversity(university).let { universityServices.addUniversity(it) })
+        return universityServices.addUniversity(university)
     }
 
     @GetMapping("/find-University-By-Id/{id}")
     fun findUniversityById(@PathVariable id: Long): UniversityDto? {
-        return universityServices.getUniversityById(id)?.let { mapper.toDto(it) }
+        return universityServices.getUniversityById(id)
     }
 
     @GetMapping("/get-All-Universities")
     fun getAllUniversities(): MutableList<UniversityDto>? {
-        return mapper.toDtoUniversities(universityServices.getAllUniversities() as MutableList<University>)
+        return universityServices.getAllUniversities() as MutableList<UniversityDto>?
     }
 
-    @PutMapping("update-University-Info")
-    fun updateUniversityInfo(@RequestBody university: UniversityDto): UniversityDto {
-        return mapper.toDto(mapper.toUniversity(university).let { universityServices.updateUniversity(it) }!!)
+    @PutMapping("update-University-Info/{id}")
+    fun updateUniversityInfo(@PathVariable id: Long,  @RequestBody university: UniversityDto): UniversityDto? {
+        return universityServices.updateUniversity(id, university)
     }
 
     @DeleteMapping("delete-University-By-Id/{id}")
