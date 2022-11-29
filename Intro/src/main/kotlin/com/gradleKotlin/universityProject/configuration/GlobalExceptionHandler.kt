@@ -3,6 +3,7 @@ package com.gradleKotlin.universityProject.configuration
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.validation.FieldError
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -25,5 +26,14 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
             .collect(Collectors.toList())
         body["errors"] = errors
         return ResponseEntity(body, HttpStatus.BAD_REQUEST)
+    }
+    override fun handleHttpMessageNotReadable(
+        ex: HttpMessageNotReadableException,
+        headers: HttpHeaders,
+        status: HttpStatus,
+        request: WebRequest
+    ): ResponseEntity<Any> {
+        // paste custom hadling here
+        return ResponseEntity(ex.message, HttpStatus.BAD_REQUEST)
     }
 }
