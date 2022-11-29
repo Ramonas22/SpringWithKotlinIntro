@@ -5,7 +5,7 @@ import com.gradleKotlin.todo.services.UserServices
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
-@CrossOrigin(origins = ["http://localhost:3000", "http://127.0.0.1:3000"])
+@CrossOrigin(origins = ["http://localhost:3000", "http://127.0.0.1:5500"])
 @RestController
 @RequestMapping("/User")
 class UserController {

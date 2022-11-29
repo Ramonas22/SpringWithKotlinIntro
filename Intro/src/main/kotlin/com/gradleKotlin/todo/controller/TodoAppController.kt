@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 
-@CrossOrigin(origins = ["http://localhost:3000", "http://127.0.0.1:3000"])
+@CrossOrigin(origins = ["http://localhost:3000", "http://127.0.0.1:5500"])
 @RestController
 @RequestMapping("/Todo")
 class TodoAppController {
@@ -29,6 +29,10 @@ class TodoAppController {
     @GetMapping("/")
     fun getAllTodos():MutableList<TodoAppDto>?{
         return services.getAllTodos()
+    }
+    @GetMapping("/tasks/{id}")
+    fun getTodosByUserId(@PathVariable id: Long): MutableList<TodoAppDto>?{
+        return services.getTodosByUserId(id)
     }
 
     @PostMapping("/create")

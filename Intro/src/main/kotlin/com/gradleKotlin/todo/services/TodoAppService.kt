@@ -1,6 +1,7 @@
 package com.gradleKotlin.todo.services
 
 import com.gradleKotlin.todo.dto.TodoAppDto
+import com.gradleKotlin.todo.entities.TodoApp
 import com.gradleKotlin.todo.mappers.TodoAppMapper
 import com.gradleKotlin.todo.repositories.TodoAppRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -42,5 +43,9 @@ class TodoAppService {
         }else{
             print("Failed to delete Todo with provided id")
         }
+    }
+
+    fun getTodosByUserId(id: Long): MutableList<TodoAppDto>? {
+        return mapper.todoAppListToDtoList(todoRepo.findALlByUser_Id(id) as MutableList<TodoApp>) as MutableList<TodoAppDto>
     }
 }
