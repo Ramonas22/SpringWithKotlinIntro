@@ -1,8 +1,6 @@
 package com.gradleKotlin.universityProject.controllers
 
-import com.gradleKotlin.universityProject.mappers.StudentMapper
 import com.gradleKotlin.universityProject.services.StudentServices
-import com.gradleKotlin.universityProject.models.Student
 import com.gradleKotlin.universityProject.dto.StudentDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*

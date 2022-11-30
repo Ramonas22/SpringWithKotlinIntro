@@ -11,5 +11,7 @@ data class StudentDto(
 
     val course: String?,
 
-    val universitiesId:MutableList<Long>?
+    val universitiesId: MutableList<Long>?,
+
+    val coursesId: MutableList<Long>?
 )

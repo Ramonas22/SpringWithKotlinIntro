@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository
 interface StudentRepository : CrudRepository<Student, Long> {
     @Query("select s from Student s join s.universities us where us.id = :universityId")
     fun findAllByUniversityId(@Param("universityId") universityId: Long): MutableList<Student>
-    //fun findAllByUniversityId(universityId: Long) : MutableList<Student>
+
 }

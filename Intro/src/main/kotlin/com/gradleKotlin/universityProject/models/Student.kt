@@ -10,16 +10,16 @@ data class Student(
     val id: Long,
 
     @Column(name = "first_name")
-    val firstName: String?,
+    val firstName: String? = null,
 
     @Column(name = "last_name")
-    val lastName: String?,
+    val lastName: String? = null,
 
     @Column(name = "personal_code")
-    val personalCode: String?,
+    val personalCode: String? = null,
 
     @Column(name = "course")
-    val course: String?,
+    val course: String? = null,
 
     @ManyToMany
     @JoinTable(
@@ -28,5 +28,9 @@ data class Student(
         inverseJoinColumns = [JoinColumn(name = "university_id")]
     )
     @Column(name = "universities")
-    val universities: MutableList<University>?
+    val universities: MutableList<University>? = null,
+
+    @ManyToMany(mappedBy = "studentsEnrolled")
+    @Column(name = "courses")
+    val courses: MutableList<Course>? = null
 )
