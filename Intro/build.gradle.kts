@@ -41,10 +41,16 @@ dependencies {
     implementation("org.hibernate:hibernate-entitymanager:5.6.14.Final")
 
 
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    testImplementation("org.springframework.security:spring-security-test")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
+
+
     implementation("io.projectreactor:reactor-bom:2020.0.4")
     implementation("io.projectreactor:reactor-core")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
-    //JPA
+
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-mustache")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")

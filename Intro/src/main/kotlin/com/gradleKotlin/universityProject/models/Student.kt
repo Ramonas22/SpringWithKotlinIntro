@@ -21,7 +21,7 @@ data class Student(
     @Column(name = "course")
     val course: String? = null,
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name ="universities_students",
         joinColumns = [JoinColumn(name ="student_id")],
@@ -30,7 +30,12 @@ data class Student(
     @Column(name = "universities")
     val universities: MutableList<University>? = null,
 
-    @ManyToMany(mappedBy = "studentsEnrolled")
+    @ManyToMany
+    @JoinTable(
+        name ="courses_students",
+        joinColumns = [JoinColumn(name ="student_id")],
+        inverseJoinColumns = [JoinColumn(name = "course_id")]
+    )
     @Column(name = "courses")
     val courses: MutableList<Course>? = null
 )

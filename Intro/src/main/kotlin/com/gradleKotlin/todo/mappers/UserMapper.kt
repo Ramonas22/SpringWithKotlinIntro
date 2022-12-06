@@ -29,7 +29,7 @@ class UserMapper {
             if(user.todosList?.isNotEmpty() == true){
                 todoList.addAll(userRepo.findAllById(user.todosList) as MutableList<TodoApp>)
             }
-            User(user.id, user.name, user.surname, user.email, todoList)
+            User(user.id, user.name, user.surname, user.email,null , todoList)
         }else {
              null
         }

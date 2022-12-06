@@ -33,7 +33,12 @@ data class University(
     @Column(name = "email")
     val email : String? = null,
 
-    @ManyToMany(mappedBy = "universities", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name ="universities_students",
+        joinColumns = [JoinColumn(name = "university_id")],
+        inverseJoinColumns = [JoinColumn(name ="student_id")]
+    )
     @Column(name = "students")
     val students : MutableList<Student>? = null
 
