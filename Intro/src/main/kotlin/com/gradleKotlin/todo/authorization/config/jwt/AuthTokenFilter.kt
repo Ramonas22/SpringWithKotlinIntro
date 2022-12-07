@@ -48,7 +48,9 @@ class AuthTokenFilter : OncePerRequestFilter() {
 
     private fun parseJwt(request: HttpServletRequest): String {
         val jwt = request.getHeader("Authorization")
-        return jwt.replace("Bearer ", "")
+        return jwt?.replace("Bearer ", "") ?: ({
+            null
+        }).toString()
     }
 
     companion object {

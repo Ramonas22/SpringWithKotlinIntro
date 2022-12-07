@@ -92,7 +92,7 @@ function register(e) {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ name: nameInput.value, surname: surnameInput.value, email: emailInput.value })
+                    body: JSON.stringify({ email: nameInput.value, password: surnameInput.value })
                 }).then(res => {
                     console.log(res)
                     if (res.status == 200)
@@ -101,9 +101,10 @@ function register(e) {
                         
                         localStorage.setItem(`user`, JSON.stringify({
                             id: user.id,
-                            name: nameInput.value,
-                            surname: surnameInput.value,
-                            email: emailInput.value
+                            name: user.name,
+                            surname : user.surname,
+                            email : user.email,
+                            token : user.token 
                         }))})
                         window.location.href = `http://127.0.0.1:${port}/todo/todo.html`
                     }})

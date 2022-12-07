@@ -25,11 +25,11 @@ class UserDetailsImpl(
     }
 
     override fun getPassword(): String {
-        TODO("Not yet implemented")
+        return password
     }
 
     override fun getUsername(): String {
-        TODO("Not yet implemented")
+        return email
     }
 
     private val isAccountNonExpired: Boolean = true

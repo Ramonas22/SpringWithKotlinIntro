@@ -16,7 +16,7 @@ class JwtUtils {
     private val jwtExpirationMs = 0
 
     fun generateJwtToken(userPrincipal: UserDetailsImpl): String {
-        return generateTokenFromUsername(userPrincipal.username)
+        return generateTokenFromUsername(userPrincipal.email)
     }
 
     fun getUserNameFromJwtToken(token: String?): String {

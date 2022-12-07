@@ -3,6 +3,8 @@ let mainDiv = document.createElement(`div`)
 document.body.appendChild(mainDiv)
 mainDiv.className = `mainDiv`
 
+console.log(JSON.parse(localStorage.getItem(`user`)).id)
+
 //Types
 let type = ["Vacation", "Shopping", "Job", "Craft", "Gym"]
 
@@ -90,7 +92,9 @@ function postTodo(e) {
     fetch(`http://localhost:8092/Todo/create`, {
         method: `POST`,
         headers: {
+            "Authorization": "Bearer "+ JSON.parse(localStorage.getItem(`user`)).token,
             'Content-Type': 'application/json'
+
         },
         body: JSON.stringify({
             type: selectType.value,
@@ -128,7 +132,12 @@ function getTodo1() {
 
 function getTodo() {
     clearCards()
-    fetch(`http://localhost:8092/Todo/tasks/${JSON.parse(localStorage.getItem("user")).id}`)
+    fetch(`http://localhost:8092/Todo/tasks/${JSON.parse(localStorage.getItem("user")).id}`,{
+    method: "GET",
+    headers : {
+        "Authorization": "Bearer "+ JSON.parse(localStorage.getItem(`user`)).token
+    }
+        })
     .then(res => res.json())
     .then(data => {
         console.log(data)
@@ -228,9 +237,11 @@ function updateCard(e, id, card) {
         fetch(`http://localhost:8092/Todo/update`, {
         method: `PUT`,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization": "Bearer "+ JSON.parse(localStorage.getItem(`user`)).token
         },
         body: JSON.stringify({
+            id: id,
             type: card.children[0].value,
             content: card.children[1].value,
             endDate: card.children[2].value,
@@ -261,7 +272,8 @@ function deleteCard(e, id) {
     fetch(`http://localhost:8092/Todo/delete/${id}`, {
         method: `DELETE`,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization": "Bearer "+ JSON.parse(localStorage.getItem(`user`)).token
         }
     })
     setTimeout(() => clearCards(), 2000)
@@ -269,7 +281,7 @@ function deleteCard(e, id) {
 }
 
 function preventNoUserConnection() {
-    if (JSON.parse(localStorage.getItem("user")) == null || JSON.parse(localStorage.getItem("user")).name.length < 1) {
+    if (JSON.parse(localStorage.getItem("user")) == null || JSON.parse(localStorage.getItem("user")).token.length < 1) {
         window.location.href = `http://127.0.0.1:${port}/index.html`
     }
 }

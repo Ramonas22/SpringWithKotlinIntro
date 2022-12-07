@@ -42,6 +42,7 @@ class TodoAppController {
 
     @PutMapping("/update")
     fun updateTodo(@RequestBody todoAppDto: TodoAppDto) : TodoAppDto?{
+        print(todoAppDto)
         return services.updateTodo(todoAppDto)
     }
 

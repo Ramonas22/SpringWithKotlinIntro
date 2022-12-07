@@ -68,9 +68,10 @@ submitBtn.addEventListener(`click`, (eve) => login(eve))
 function login(e) {
     e.preventDefault()
     //fetch(`https://testapi.io/api/Ramonas/resource/user`)
-    fetch(`http://localhost:8092/User/`)
+    /*fetch(`http://localhost:8092/User/`)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             // let users = data.data
             let users = data
             console.log(users)
@@ -83,7 +84,7 @@ function login(e) {
                         surname: users[i].surname,
                         email: users[i].email
                     }))
-                    window.location.href = `http://127.0.0.1:${port}/todo/todo.html`
+                    //window.location.href = `http://127.0.0.1:${port}/todo/todo.html`
                     flag = false
                 }
             }
@@ -91,5 +92,25 @@ function login(e) {
                 errorField.style.visibility = "visible"
             }
 
-        })
+        })*/
+        fetch(`http://localhost:8092/api/auth/login`, {
+            method: `POST`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: nameInput.value, password: surnameInput.value})
+        }).then(res => {
+            if (res.status == 200)
+            {
+                res.json().then(user =>{
+                console.log(user)
+                localStorage.setItem(`user`, JSON.stringify({
+                    id: user.id,
+                    name: user.name,
+                    surname : user.surname,
+                    email : user.email,
+                    token : user.token 
+                }))})
+                window.location.href = `http://127.0.0.1:${port}/todo/todo.html`
+            }})
 }

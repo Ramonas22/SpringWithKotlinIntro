@@ -1,11 +1,13 @@
 package com.gradleKotlin.todo.services
 
 import com.gradleKotlin.todo.dto.UserDto
+import com.gradleKotlin.todo.entities.User
 import com.gradleKotlin.todo.mappers.UserMapper
 import com.gradleKotlin.todo.repositories.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class UserServices {
@@ -26,6 +28,10 @@ class UserServices {
 
     fun findUserById(id : Long):UserDto? {
         return userRepository.findByIdOrNull(id)?.let { mapper.toUserDto(it) }
+    }
+
+    fun findUserByEmail(email : String) : UserDto? {
+        return mapper.toUserDto(userRepository.findByEmail(email).get())
     }
 
     fun getAllUsers(): MutableList<UserDto>? {

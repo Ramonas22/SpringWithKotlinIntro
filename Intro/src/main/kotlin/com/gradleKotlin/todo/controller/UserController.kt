@@ -3,6 +3,7 @@ package com.gradleKotlin.todo.controller
 import com.gradleKotlin.todo.dto.UserDto
 import com.gradleKotlin.todo.services.UserServices
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 
 @CrossOrigin(origins = ["http://localhost:3000", "http://127.0.0.1:5500"])
@@ -18,6 +19,7 @@ class UserController {
         return services.findUserById(id)
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     @GetMapping("/")
     fun getAllUsers(): MutableList<UserDto>? {
         return services.getAllUsers()

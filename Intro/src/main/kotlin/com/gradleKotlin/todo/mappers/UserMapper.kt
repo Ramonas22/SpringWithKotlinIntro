@@ -6,6 +6,7 @@ import com.gradleKotlin.todo.entities.User
 import com.gradleKotlin.todo.repositories.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class UserMapper {
@@ -19,7 +20,7 @@ class UserMapper {
             if(!user.userTodos.isNullOrEmpty()){
                 user.userTodos!!.forEach { grabId -> todosIdList.add(grabId.id) }
             }
-            UserDto(user.id, user.name, user.surname, user.email, todosIdList)
+            UserDto(id =user.id,name = user.name,surname = user.surname,email = user.email, todosList =  todosIdList, password = user.password)
         }
     }
 
@@ -29,7 +30,7 @@ class UserMapper {
             if(user.todosList?.isNotEmpty() == true){
                 todoList.addAll(userRepo.findAllById(user.todosList) as MutableList<TodoApp>)
             }
-            User(user.id, user.name, user.surname, user.email,null , todoList)
+            User(user.id, user.name, user.surname, user.email,user.password ,todoList)
         }else {
              null
         }
